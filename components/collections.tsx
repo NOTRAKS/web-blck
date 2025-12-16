@@ -54,62 +54,64 @@ export default function Collections() {
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="aspect-[3/4] relative mb-4 border overflow-hidden" style={{ borderColor: "rgba(221, 204, 175, 0.1)", backgroundColor: "#1a1a1a" }}>
-                <img
-                  src={collection.image || "/placeholder.jpg"}
-                  alt={collection.title}
-                  className={`w-full h-full object-cover grayscale transition-elegant duration-500 ${
-                    hoveredIndex === idx ? "opacity-100 grayscale-0 scale-105" : "opacity-70"
-                  }`}
-                  loading="lazy"
-                  decoding="async"
-                  fetchPriority={idx === 0 ? "high" : "low"}
-                />
-                <div
-                  className={`absolute inset-0 transition-all duration-500 ${
-                    hoveredIndex === idx ? "bg-white opacity-90" : "bg-transparent opacity-0"
-                  }`}
-                />
-                <div
-                  className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ${
-                    hoveredIndex === idx ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                  }`}
-                >
-                  {collection.id === "wallets" ? (
-                    <>
+              <Link href={`/checkout?product=${collection.id}&title=${encodeURIComponent(collection.title)}&price=${encodeURIComponent(collection.price)}`} className="block">
+                <div className="aspect-[3/4] relative mb-4 border overflow-hidden cursor-pointer" style={{ borderColor: "rgba(221, 204, 175, 0.1)", backgroundColor: "#1a1a1a" }}>
+                  <img
+                    src={collection.image || "/placeholder.jpg"}
+                    alt={collection.title}
+                    className={`w-full h-full object-cover grayscale transition-elegant duration-500 ${
+                      hoveredIndex === idx ? "opacity-100 grayscale-0 scale-105" : "opacity-70"
+                    }`}
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority={idx === 0 ? "high" : "low"}
+                  />
+                  <div
+                    className={`absolute inset-0 transition-all duration-500 ${
+                      hoveredIndex === idx ? "bg-white opacity-90" : "bg-transparent opacity-0"
+                    }`}
+                  />
+                  <div
+                    className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ${
+                      hoveredIndex === idx ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    }`}
+                  >
+                    {collection.id === "wallets" ? (
+                      <>
+                        <span
+                          className="text-lg md:text-xl font-black uppercase mb-1"
+                          style={{
+                            letterSpacing: "0.15em",
+                            color: "#000",
+                          }}
+                        >
+                          7000
+                        </span>
+                        <span
+                          className="text-xs md:text-sm font-semibold uppercase"
+                          style={{
+                            letterSpacing: "0.1em",
+                            color: "#000",
+                            opacity: 0.8,
+                          }}
+                        >
+                          рублей
+                        </span>
+                      </>
+                    ) : (
                       <span
-                        className="text-lg md:text-xl font-black uppercase mb-1"
+                        className="text-sm md:text-base font-bold uppercase"
                         style={{
-                          letterSpacing: "0.15em",
+                          letterSpacing: "0.2em",
                           color: "#000",
                         }}
                       >
-                        7000
+                        Скоро в продаже
                       </span>
-                      <span
-                        className="text-xs md:text-sm font-semibold uppercase"
-                        style={{
-                          letterSpacing: "0.1em",
-                          color: "#000",
-                          opacity: 0.8,
-                        }}
-                      >
-                        рублей
-                      </span>
-                    </>
-                  ) : (
-                    <span
-                      className="text-sm md:text-base font-bold uppercase"
-                      style={{
-                        letterSpacing: "0.2em",
-                        color: "#000",
-                      }}
-                    >
-                      Скоро в продаже
-                    </span>
-                  )}
+                    )}
+                  </div>
                 </div>
-              </div>
+              </Link>
               <h3
                 className="text-lg md:text-xl font-black uppercase text-center mb-4 transition-elegant"
                 style={{ letterSpacing: "0.08em", color: hoveredIndex === idx ? "#DDCCAF" : "rgba(221, 204, 175, 0.7)" }}

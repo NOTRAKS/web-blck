@@ -32,21 +32,18 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/placeholder-logo.png",
-        type: "image/png",
+        url: "/favicon.ico",
+        type: "image/x-icon",
         sizes: "32x32",
       },
       {
-        url: "/placeholder-logo.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/placeholder-logo.png",
-        media: "(prefers-color-scheme: dark)",
+        url: "/icon.svg",
+        type: "image/svg+xml",
+        sizes: "any",
       },
     ],
-    apple: "/placeholder-logo.png",
-    shortcut: "/placeholder-logo.png",
+    apple: "/icon.svg",
+    shortcut: "/favicon.ico",
   },
 }
 
@@ -58,9 +55,10 @@ export default function RootLayout({
   return (
     <html lang="ru" className="scroll-smooth">
       <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/icon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-        <link rel="icon" href="/placeholder-logo.png" type="image/png" />
-        <link rel="shortcut icon" href="/placeholder-logo.png" />
       </head>
       <body className={`${inter.className} ${spaceMono.variable} ${montserrat.variable} bg-black text-white antialiased`}>
         {/* Yandex.Metrika counter */}
@@ -81,7 +79,7 @@ export default function RootLayout({
         />
         <noscript>
           <div>
-            <img src="https://mc.yandex.ru/watch/105803203" style={{position:'absolute', left:'-9999px'}} alt="" />
+            <img src="https://mc.yandex.ru/watch/105803203" style={{ position: 'absolute', left: '-9999px' }} alt="" />
           </div>
         </noscript>
         {/* /Yandex.Metrika counter */}
