@@ -62,6 +62,8 @@ export default function Collections() {
                     hoveredIndex === idx ? "opacity-100 grayscale-0 scale-105" : "opacity-70"
                   }`}
                   loading="lazy"
+                  decoding="async"
+                  fetchPriority={idx === 0 ? "high" : "low"}
                 />
                 <div
                   className={`absolute inset-0 transition-all duration-500 ${

@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
 
 export default function Welcome() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -31,26 +32,28 @@ export default function Welcome() {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div
-            className="flex items-center justify-center mx-auto transition-elegant group hover:scale-105"
-            style={{ 
-              width: "clamp(200px, 55vw, 400px)", 
-              height: "clamp(50px, 12vw, 100px)", 
-              backgroundColor: "#DDCCAF" 
-            }}
-          >
-            <span
-              className="font-black text-black"
-              style={{
-                fontSize: "clamp(36px, 9vw, 70px)",
-                fontFamily: "Montserrat, sans-serif",
-                fontWeight: 800,
-                letterSpacing: "0.10px",
+          <Link href="/collections">
+            <div
+              className="flex items-center justify-center mx-auto transition-elegant group hover:scale-105 cursor-pointer"
+              style={{ 
+                width: "clamp(200px, 55vw, 400px)", 
+                height: "clamp(50px, 12vw, 100px)", 
+                backgroundColor: "#DDCCAF" 
               }}
             >
-              BLCK
-            </span>
-          </div>
+              <span
+                className="font-black text-black"
+                style={{
+                  fontSize: "clamp(36px, 9vw, 70px)",
+                  fontFamily: "Montserrat, sans-serif",
+                  fontWeight: 800,
+                  letterSpacing: "0.10px",
+                }}
+              >
+                BLCK
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
     </section>

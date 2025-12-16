@@ -31,7 +31,7 @@
 - [x] `placeholder.svg`
 - [x] `icon.svg`
 - [x] `icon-light-32x32.png`
-- [x] `icon-dark-32x32.png`
+- [x] `icon-dark-32x32.png` (логотип BLCK)
 - [x] `apple-icon.png`
 
 ### Проверка путей к изображениям в коде:

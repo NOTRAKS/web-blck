@@ -64,9 +64,11 @@ export default function Hero() {
               >
                 <img
                   src="/luxury-leather-belt-studio-monochrome.jpg"
-                  alt="Premium leather belt"
+                  alt="BLCK leather belt"
                   className="w-full h-full object-contain object-center grayscale opacity-80 group-hover:opacity-100 transition-elegant"
                   loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                 />
               </div>
             </div>

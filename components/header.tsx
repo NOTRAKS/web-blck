@@ -1,15 +1,55 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname, useRouter } from "next/navigation"
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const router = useRouter()
 
   const handleLinkClick = useCallback(() => {
     setMobileMenuOpen(false)
   }, [])
+
+  // Обработка прокрутки к якорю после загрузки страницы
+  useEffect(() => {
+    if (pathname === "/" && window.location.hash === "#about") {
+      setTimeout(() => {
+        const element = document.getElementById("about")
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" })
+        }
+      }, 100)
+    }
+  }, [pathname])
+
+  // Обработчик клика на "О нас"
+  const handleAboutClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname !== "/") {
+      e.preventDefault()
+      router.push("/#about")
+      setTimeout(() => {
+        const element = document.getElementById("about")
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" })
+        }
+      }, 300)
+    } else {
+      e.preventDefault()
+      const element = document.getElementById("about")
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" })
+      }
+    }
+    handleLinkClick()
+  }, [pathname, router, handleLinkClick])
+
+  // Определяем ссылку для "О нас" - всегда ведем на главную с якорем #about
+  // Это всегда переводит к блоку "BLCK - это отражение моей внутренней философии."
+  const aboutLink = pathname === "/" ? "#about" : "/#about"
 
   return (
     <header className="fixed w-full top-0 z-50 bg-black/98 backdrop-blur-sm border-b border-white/5 animate-fade-in-up">
@@ -62,10 +102,10 @@ export default function Header() {
               />
             </Link>
             <Link
-              href="#about"
+              href={aboutLink}
+              onClick={handleAboutClick}
               className="text-xs uppercase font-medium transition-smooth relative group"
               style={{ letterSpacing: "0.12em", color: "#DDCCAF" }}
-              scroll={true}
             >
               О нас
               <span
@@ -99,10 +139,10 @@ export default function Header() {
               Коллекции
             </Link>
             <Link
-              href="#about"
+              href={aboutLink}
+              onClick={handleAboutClick}
               className="text-xs uppercase font-medium"
               style={{ letterSpacing: "0.12em", color: "#DDCCAF" }}
-              onClick={handleLinkClick}
             >
               О нас
             </Link>

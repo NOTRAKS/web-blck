@@ -277,13 +277,23 @@
 
   .transition-elegant {
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity;
   }
 
   .transition-smooth {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Luxury brand color utilities */
+  /* Оптимизация производительности */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img {
+    content-visibility: auto;
+  }
+
   .text-luxury-gold {
     color: var(--luxury-gold);
   }
@@ -328,7 +338,6 @@
     border-color: var(--luxury-gold-4);
   }
 
-  /* Letter spacing utilities */
   .tracking-luxury {
     letter-spacing: 0.12em;
   }
@@ -340,15 +349,11 @@
   .tracking-luxury-wider {
     letter-spacing: 0.2em;
   }
-
-  /* Удаление черного фона с изображения */
   .remove-black-background {
     mix-blend-mode: screen;
     filter: contrast(1.3) brightness(1.15) saturate(1.2);
     isolation: isolate;
   }
-  
-  /* Контейнер для правильной работы mix-blend-mode */
   .remove-black-background-container {
     position: relative;
     isolation: isolate;
